@@ -6,28 +6,24 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	cv = notion_restaurant.NotionDB()
-	# query = cv.query()
-	cv.update_addresses()
 	return render_template('index.html', token = os.environ.get('GMAPS_LINK'))
 	
 
-# @app.route('/test', methods=['GET', 'POST'])
-# def test():
-# 	# POST request
-# 	if request.method == 'POST':
-# 		print('Incoming ..')
-# 		print(request.get_json())
-# 		return 'OK', 200
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+	cv = notion_restaurant.NotionDB()
+	cv.update_addresses()
 
-# 	# GET request
-# 	else:
-# 		# geocoded_addresses = []
-# 		notion_restaurant.get_notion_db()
-# 		# all_addr = notion_restaurant.get_addresses()
-# 		# for addr in all_addr:
-# 		# 	geocoded_addresses.append(notion_restaurant.geocode(addr))
-# 		return jsonify(notion_restaurant.get_notion_db())
+	# POST request
+	if request.method == 'POST':
+		print('Incoming ..')
+		print(request.get_json())
+		return 'OK', 200
+
+	# GET request
+	else:
+		addresses = cv.get_geo_addresses()
+		return jsonify(addresses)
 
 
 if __name__ == '__main__':

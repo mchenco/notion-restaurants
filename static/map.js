@@ -1,20 +1,10 @@
 var map;
 
 function initMap() {
-	var apple = {lat: 37.3327, lng: -122.0053};
-
+	bounds  = new google.maps.LatLngBounds();
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 11,
-		center: apple
-	});
-
-	var marker = new google.maps.Marker({
-		position: apple,
-		map: map,
-		icon: {
-			url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-		},
-		title: 'Apple Park'
+		center: {'lat': 43.6532, 'lng': -79.3832}
 	});
 }
 
@@ -36,9 +26,9 @@ fetch('/test')
 	.then(function (response) {
 			return response.json();
 		}).then(function (all_addr) {
-			// for (x of all_addr) {
-			// 	console.log(x[0]);
-			// 	placeMarker(x[0]);
-			// };
+			for (x of all_addr) {
+				console.log(x[0]);
+				placeMarker(x[0]);
+			};
 	// .catch() {}
 	});

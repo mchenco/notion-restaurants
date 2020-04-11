@@ -63,20 +63,15 @@ class NotionDB:
 					row.address = addr
 		return
 
+	def get_geo_addresses(self):
+		query = self.query()
+		addresses = []
 
-	# def get_addresses(self):
-	# 	addresses = []
-	# 	data = get_notion_db()
-	# 	lst = [row for row in data if row.title] #removes empties
-	# 	for row in lst:
-	# 		raw_addr = row.title
-	# 		addr = str(row.title.split('|')[0])
-	# 		addresses.append(addr)
-	# 	return addresses
+		for row in query:
+			if row.address != '':
+				addresses.append(self.geocode(row.address))
+		return addresses
 
-		#### yo add db to remove duplicates ??/
-		### hash table this bitch ??
-
-	# def geocode(addr):
-	# 	gmaps = googlemaps.Client(os.environ.get('GMAPS_KEY'))
-	# 	return gmaps.geocode(addr)
+	def geocode(self, addr):
+		gmaps = googlemaps.Client(os.environ.get('GMAPS_KEY'))
+		return gmaps.geocode(addr)
