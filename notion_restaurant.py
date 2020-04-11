@@ -43,7 +43,7 @@ class NotionDB:
 		filter_result = self.cv.build_query(filter=filter_params).execute()
 
 		for row in filter_result:
-			# filter queries aren't working so xtra checks :()
+			# filter queries aren't working so xtra checks :(
 			if row.title and row.address == '':
 				print(row.title)
 				payload = {

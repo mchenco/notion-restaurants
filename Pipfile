@@ -10,6 +10,7 @@ master = {git = "https://github.com/mchenco/notion-py.git"}
 googlemaps = "*"
 flask = "*"
 requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.6"
