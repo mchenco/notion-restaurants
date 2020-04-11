@@ -8,16 +8,44 @@ class NotionDB:
 	def __init__(self):
 		self.client = NotionClient(os.environ.get('NOTION_KEY'))
 		self.cv = self.client.get_collection_view(os.environ.get('RESTAURANT_DB'))
-		self.query
 		return
 
 	def query(self):
-		self.query = self.cv.default_query().execute()
-		return self.query
+		return self.cv.default_query().execute()
 
-	def add_addresses(self):
-		for row in self.query:
-			if row.title and row.address == '': #only update fields that are empty
+	def update_addresses(self):
+		filter_params = [{
+		    'property': 'address',
+		    'comparator': 'is',
+		    'value': ''
+		}]
+
+		# filter_params =  {
+  #       "filters":[ 
+  #           { 
+  #               "filter":{ 
+  #                   "property":"address",
+  #                   "comparator":"is",
+  #                   "value":''
+  #               },
+  #           },
+  #           { 
+  #               "filter":{ 
+  #                   "property":"title",
+  #                   "comparator":"is_not",
+  #                   "value": ''
+  #               },
+  #           }
+  #       ],
+  #       "operator":"and"
+  #   }
+
+		filter_result = self.cv.build_query(filter=filter_params).execute()
+
+		for row in filter_result:
+			# filter queries aren't working so xtra checks :()
+			if row.title and row.address == '':
+				print(row.title)
 				payload = {
 					'key': os.environ.get('GMAPS_KEY'),
 					'input': row.title,

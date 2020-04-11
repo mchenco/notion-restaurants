@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
 	cv = notion_restaurant.NotionDB()
-	cv.query()
-	cv.add_addresses()
+	# query = cv.query()
+	cv.update_addresses()
 	return render_template('index.html', token = os.environ.get('GMAPS_LINK'))
 	
 
