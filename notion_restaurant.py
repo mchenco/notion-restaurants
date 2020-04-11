@@ -6,12 +6,14 @@ from datetime import datetime
 
 def get_notion_db():
 	client = NotionClient(os.environ.get('NOTION_KEY'))
-	print(client)
 	cv = client.get_collection_view(os.environ.get('RESTAURANT_DB'))
-	print(cv)
 	return cv.default_query().execute()
 
-# def add_addresses():
+def add_addresses(cv):
+	for row in cv:
+		print(row.title)
+		
+	return
 
 
 # def get_addresses():

@@ -114,7 +114,7 @@
         },
         "master": {
             "git": "https://github.com/mchenco/notion-py.git",
-            "ref": "a666e774ba80420b59558a7b87954b3cfdd770a3"
+            "ref": "7e88800625fd5f171ce2eeff5fb57819b96c428d"
         },
         "requests": {
             "hashes": [
