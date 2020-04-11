@@ -3,7 +3,7 @@ var map;
 function initMap() {
 	bounds  = new google.maps.LatLngBounds();
 	map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 11,
+		zoom: 10,
 		center: {'lat': 43.6532, 'lng': -79.3832}
 	});
 }
@@ -27,7 +27,6 @@ fetch('/test')
 			return response.json();
 		}).then(function (all_addr) {
 			for (x of all_addr) {
-				console.log(x[0]);
 				placeMarker(x[0]);
 			};
 	// .catch() {}
