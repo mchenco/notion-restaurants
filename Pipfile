@@ -9,6 +9,7 @@ verify_ssl = true
 master = {git = "https://github.com/mchenco/notion-py.git"}
 googlemaps = "*"
 flask = "*"
+requests = "*"
 
 [requires]
 python_version = "3.6"

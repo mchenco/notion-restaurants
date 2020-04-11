@@ -2,7 +2,7 @@ import os
 
 from notion.client import NotionClient
 import googlemaps
-from datetime import datetime
+import requests
 
 def get_notion_db():
 	client = NotionClient(os.environ.get('NOTION_KEY'))
@@ -11,8 +11,22 @@ def get_notion_db():
 
 def add_addresses(cv):
 	for row in cv:
-		print(row.title)
-		
+		if row.title:
+			payload = {
+				'key': os.environ.get('GMAPS_KEY'),
+				'input': row.title,
+				'inputtype': 'textquery',
+				'locationbias': 'ipbias',
+				'fields': ['formatted_address', 'geometry', 'icon', 'name', 'photos', 'place_id']
+			}
+			r = requests.get(
+				'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?',
+				params=payload
+			)
+			data = r.json()
+			if data['status'] == 'OK':
+				addr = data['candidates'][0]['formatted_address']
+				row.address = addr
 	return
 
 
