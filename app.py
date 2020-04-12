@@ -15,7 +15,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/restaurant_data'
 def hello():
 	cv = notion_restaurant.NotionDB()
 	cv.add_all_addresses()
-	return render_template('index.html', token = os.environ.get('GMAPS_LINK'))
+	return render_template(
+		'index.html',
+		token = os.environ.get('GMAPS_LINK')
+	)
 	
 
 @app.route('/test', methods=['GET', 'POST'])
@@ -31,7 +34,7 @@ def test():
 
 	# GET request
 	else:
-		addresses = cv.get_geo_addresses()
+		# addresses = cv.get_geo_addresses()
 		return jsonify(addresses)
 
 

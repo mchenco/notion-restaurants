@@ -33,7 +33,7 @@ class NotionDB:
 	def gmaps_search(self, search):
 		payload = {
 			'key': os.environ.get('GMAPS_KEY'),
-			'input': row.title,
+			'input': search,
 			'inputtype': 'textquery',
 			'locationbias': 'ipbias',
 			'fields': 'formatted_address,geometry,icon,name,photos,place_id'
@@ -81,7 +81,6 @@ class NotionDB:
 					info = data['candidates'][0]
 					addr = info['formatted_address']
 					row.address = addr
-					# self.dct[info['name']] = info
 					self.add_address_to_db(info)
 					return
 
