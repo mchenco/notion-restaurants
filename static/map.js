@@ -8,16 +8,11 @@ function initMap() {
 	});
 }
 
-function placeMarker(coords) {
-	var latLng = new google.maps.LatLng(
-		coords.geometry.location.lat,
-		coords.geometry.location.lng
-	);
-
+function placeMarker(lat, lng) {
 	var marker = new google.maps.Marker({
-		position: latLng,
-		map: map,
-		title: coords.formatted_address
+		position: {'lat': lat, 'lng': lng},
+		map: map
+		// title: coords.formatted_address
 	});
 }
 
@@ -25,9 +20,11 @@ function placeMarker(coords) {
 fetch('/test')
 	.then(function (response) {
 			return response.json();
-		}).then(function (all_addr) {
-			for (x of all_addr) {
-				placeMarker(x[0]);
+		}).then(function (dct) {
+			for (var restaurant in dct) {
+				lat = dct[restaurant].geometry.location.lat;
+				lng = dct[restaurant].geometry.location.lng;
+				placeMarker(lat, lng);
 			};
 	// .catch() {}
 	});

@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, render_template
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def index():
 	return render_template('index.html', token = os.environ.get('GMAPS_LINK'))
 	
 
@@ -22,8 +22,8 @@ def test():
 
 	# GET request
 	else:
-		addresses = cv.get_geo_addresses()
-		return jsonify(addresses)
+		dct = cv.get_info()
+		return jsonify(dct)
 
 
 if __name__ == '__main__':
