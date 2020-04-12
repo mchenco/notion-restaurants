@@ -28,7 +28,7 @@ class NotionDB:
 			params=payload
 		)
 		return r.json()
-
+		
 	# def update_addresses(self):
 	# 	filter_params = [{
 	# 	    'property': 'address',
@@ -49,6 +49,7 @@ class NotionDB:
 	# 				self.dct[info['name']] = info
 	# 	return
 
+	#initialize database
 	def add_all_addresses(self):
 		filter_params = [{
 		    'property': 'address',
@@ -64,16 +65,31 @@ class NotionDB:
 				if data['status'] == 'OK':
 					info = data['candidates'][0]
 					self.dct[info['place_id']] = info
+	
+	#only add new restaurants, ones that aren't in db
+	def update_addresses(self):
+		filter_params = [{
+		    'property': 'address',
+		    'comparator': 'is',
+		    'value': ''
+		}]
+
+		filter_result = self.cv.build_query(filter=filter_params).execute()
+
+		for row in filter_result:
+			# filter queries aren't working so xtra checks :(
+			if row.title and row.address == '':
+				data = self.gmaps_search(row.title)
+				if data['status'] == 'OK':
+					info = data['candidates'][0]
+					addr = info['formatted_address']
+					row.address = addr
+					self.dct[info['place_id']] = info
+					return
+
+	# def get_geo_addresses(self):
+	# 	query = self.query()
+	# 	addresses = []
 
 	def get_info(self):
 		return self.dct
-
-class Restaurant():
-	def __init__(self, info):
-		self.place_id = info['place_id']
-		self.name = info['name']
-		self.formatted_address = info['formatted_address']
-		self.lat = info['geometry']['location']['lat']
-		self.lng = info['geometry']['location']['lng']
-		self.icon = info['icon']
-		# self.photos =
