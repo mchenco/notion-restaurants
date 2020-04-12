@@ -2,7 +2,24 @@ import os
 
 import notion_restaurant
 from flask import Flask, jsonify, request, render_template
+from flask_heroku import Heroku
+from flask_sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+heroku = Heroku(app)
+db = SQLAlchemy(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/restaurant_data'
+
+# class Restaurant(db.Model):
+# 	__tablename__ = 'restaurant_data'
+# 	name = db.Column(db.String(120), primary_key=True)
+# 	json_data = db.Column(JSON, unique=True)
+
+# 	def __init__(self, info):
+# 		self.name = info['name']
+# 		self.json_data = info
+
 
 @app.route('/')
 def hello():

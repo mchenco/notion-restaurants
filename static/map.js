@@ -27,6 +27,7 @@ fetch('/test')
 			return response.json();
 		}).then(function (all_addr) {
 			for (x of all_addr) {
+				console.log(x[0])
 				placeMarker(x[0]);
 			};
 	// .catch() {}
