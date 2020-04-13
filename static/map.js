@@ -1,4 +1,5 @@
 var map;
+var activewindow;
 
 function initMap() {
 	bounds  = new google.maps.LatLngBounds();
@@ -8,11 +9,26 @@ function initMap() {
 	});
 }
 
-function placeMarker(lat, lng) {
+function placeMarker(restaurant) {
+	lat = restaurant.lat;
+	lng = restaurant.lng;
+
+	var infowindow = new google.maps.InfoWindow({
+    	content: restaurant.name
+    });
+
 	var marker = new google.maps.Marker({
 		position: {'lat': lat, 'lng': lng},
-		map: map
-		// title: coords.formatted_address
+		map: map,
+		title: restaurant.name
+	});
+
+	marker.addListener('click', function() {
+		if (activewindow) {
+			activewindow.close();
+		};
+		infowindow.open(map, marker);
+		activewindow = infowindow;
 	});
 }
 
@@ -22,9 +38,7 @@ fetch('/test')
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
-				lat = dct[restaurant].lat;
-				lng = dct[restaurant].lng;
-				placeMarker(lat, lng);
+				placeMarker(dct[restaurant]);
 			};
 	// .catch() {}
 	});
