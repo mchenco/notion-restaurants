@@ -15,7 +15,6 @@ def index():
 @app.route('/test', methods=['GET', 'POST'])
 def test():
 	cv = notion_restaurant.NotionDB()
-	cv.update_addresses()
 
 	# POST request
 	if request.method == 'POST':

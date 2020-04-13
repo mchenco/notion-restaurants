@@ -22,8 +22,8 @@ fetch('/test')
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
-				lat = dct[restaurant].geometry.location.lat;
-				lng = dct[restaurant].geometry.location.lng;
+				lat = dct[restaurant].lat;
+				lng = dct[restaurant].lng;
 				placeMarker(lat, lng);
 			};
 	// .catch() {}
