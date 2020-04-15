@@ -9,12 +9,13 @@ function initMap() {
 	});
 }
 
-// 		<p> Open Now: ${restaurant.opening_hours.open_now} </p>
+// <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
 function iwSetContent(restaurant){
-	return `<h3> ${restaurant.name} </h3>
-		<p> Rating: ${restaurant.rating} ⭐️ </p>
-		<p> Price: ${restaurant.price_level} </p>
-		<a href= '${restaurant.url}'> Open in Google Maps </a>`;
+	return `<p id=iw-heading>${restaurant.name} </p>
+		<hr class="solid">
+		<p id=iw-rating class="par"> <b> Rating: </b> ${restaurant.rating} ⭐️ </p>
+		<p id=iw-price class="par"> <b> Price: </b>${restaurant.price_level} 💸 </p>
+		<a id=iw-url class="par" href= "${restaurant.url}"> Google Maps </a>`;
 }
 
 function placeMarker(restaurant) {
@@ -43,7 +44,6 @@ fetch('/test')
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
-				console.log(dct[restaurant]);
 				placeMarker(dct[restaurant]);
 			};
 	// .catch() {}
