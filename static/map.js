@@ -10,15 +10,12 @@ function initMap() {
 }
 
 function placeMarker(restaurant) {
-	lat = restaurant.lat;
-	lng = restaurant.lng;
-
 	var infowindow = new google.maps.InfoWindow({
     	content: restaurant.name
     });
 
 	var marker = new google.maps.Marker({
-		position: {'lat': lat, 'lng': lng},
+		position: {'lat': restaurant.lat, 'lng': restaurant.lng},
 		map: map,
 		title: restaurant.name
 	});
@@ -38,6 +35,7 @@ fetch('/test')
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
+				console.log(dct[restaurant])
 				placeMarker(dct[restaurant]);
 			};
 	// .catch() {}
