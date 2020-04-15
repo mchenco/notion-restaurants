@@ -11,12 +11,7 @@ googlemaps = "*"
 flask = "*"
 requests = "*"
 gunicorn = "*"
-postgres = "*"
-flask-sqlalchemy = "*"
 flask-heroku = "*"
-sqlalchemy = "*"
-psycopg2-binary = "*"
-jquery = "*"
 
 [requires]
 python_version = "3.6"
