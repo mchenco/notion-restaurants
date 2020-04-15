@@ -9,16 +9,24 @@ function initMap() {
 	});
 }
 
-function placeMarker(restaurant) {
-	var infowindow = new google.maps.InfoWindow({
-    	content: restaurant.name
-    });
+// 		<p> Open Now: ${restaurant.opening_hours.open_now} </p>
+function iwSetContent(restaurant){
+	return `<h3> ${restaurant.name} </h3>
+		<p> Rating: ${restaurant.rating} ⭐️ </p>
+		<p> Price: ${restaurant.price_level} </p>
+		<a href= '${restaurant.url}'> Open in Google Maps </a>`;
+}
 
+function placeMarker(restaurant) {
 	var marker = new google.maps.Marker({
 		position: {'lat': restaurant.lat, 'lng': restaurant.lng},
 		map: map,
 		title: restaurant.name
 	});
+
+	var infowindow = new google.maps.InfoWindow({
+	    	content: iwSetContent(restaurant)
+	    });
 
 	marker.addListener('click', function() {
 		if (activewindow) {
@@ -35,7 +43,7 @@ fetch('/test')
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
-				console.log(dct[restaurant])
+				console.log(dct[restaurant]);
 				placeMarker(dct[restaurant]);
 			};
 	// .catch() {}

@@ -25,7 +25,7 @@ class NotionDB:
 
 		for row in filter_result:
 			# only update results that don't have info populated
-			if row.title and row.place_id:
+			if row.title and not row.place_id:
 				data = gmaps.search(row.title)
 				if data['status'] == 'OK':
 					info = data['candidates'][0]

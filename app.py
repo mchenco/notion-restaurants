@@ -29,11 +29,9 @@ def test():
 		dct = cv.get_info()
 		for r in dct:
 			details = gmaps.detail_search(dct[r]['place_id'])
-			print(details)
 			if details['status'] == 'OK':		
 				for x in details['result']:
 					dct[r].update({x: details['result'][x]})
-				dct[r].update(details)
 		return jsonify(dct)
 
 
