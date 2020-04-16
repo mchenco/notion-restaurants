@@ -27,11 +27,6 @@ def test():
 	# GET request
 	else:
 		dct = cv.get_info()
-		for r in dct:
-			details = gmaps.detail_search(dct[r]['place_id'])
-			if details['status'] == 'OK':		
-				for x in details['result']:
-					dct[r].update({x: details['result'][x]})
 		return jsonify(dct)
 
 
