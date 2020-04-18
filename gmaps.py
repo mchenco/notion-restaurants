@@ -6,7 +6,7 @@ import googlemaps
 def search(searchword):
 	payload = {
 		'key': os.environ.get('GMAPS_KEY'),
-		'input': searchword + 'restaurant',
+		'input': searchword,
 		'inputtype': 'textquery',
 		# 'locationbias': 'ipbias',
 		'fields': 'formatted_address,geometry,icon,name,photos,place_id'
