@@ -24,14 +24,13 @@ I wrote this with a forked version of the [notion-py](https://github.com/jamalex
 ### Database
 I originally wanted to have a postgres db that holds the returned google search data. This basically meant that I would have 2 dbs: a Notion one with clean 'pretty' data, and a postgres one with the response data from the Google Places API (messy and long). I thought it'd be bad design to trash my beautiful Notion db with messy data. But my friend Pezz told me that it's probably even worse design to have 2 dbs with almost identical data. So Pezz wins.
 
-This means your Notion db must have the following properties:
-- Name
-- Lat
-- Lng
-- Icon
-- Photos
-- Address
-- Place_id
+This means your Notion db must have the following properties (case-sensitive):
+- name
+- lat
+- lng
+- marker_icon
+- address
+- place_id
 
 I wanted to write a function that would initialize the database for users with these properties instantiated, but it doesn't seem like the notion-py library can do that right now. Will revisit.
 
