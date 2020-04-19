@@ -1,7 +1,20 @@
 var map;
 var activewindow;
+var startlat;
+var startlng;
 
 function initMap() {
+	var city = $('#city').attr('content');
+	var geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode({'address': city}, function(results, status) {
+    if (status === 'OK') {
+    	map.setCenter(results[0].geometry.location);
+    } else {
+    	alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
 	bounds  = new google.maps.LatLngBounds();
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
@@ -37,6 +50,11 @@ function placeMarker(restaurant) {
 		activewindow = infowindow;
 	});
 }
+
+// fetch('/')
+// 	.then(function (response) {
+// 		console.log(response)
+// 	})
 
 // GET is the default method, so we don't need to set it
 fetch('/test')

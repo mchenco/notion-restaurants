@@ -33,3 +33,40 @@ html, body {
 .solid {
 	margin: 0px;
 }
+
+/*for search page */
+
+.bg-image {
+  /* The image used */
+  background-image: url("map-bg.png");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.centerall {
+	position: fixed;
+	left: 0;
+  	right: 0;
+	z-index: 2;
+	height: 100vh;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+
+	<title> Restaurant Map </title>
+</head>
+
+<body>
+<div class="bg-image"> </div>
+<div class="centerall">
+	<h1 class="subtitle is-3">
+		Where do you want to search?
+	</h1>
+
+	<div class="field">
+	  <div class="control">
+	  	<form method="post">
+	    	<input
+	    	name="city"
+	    	class="input is-info"
+	    	type="text"
+	    	placeholder="City">
+	    </form>
+	  </div>
+	</div>
+</div>
+
+</body>
+
+</html>
