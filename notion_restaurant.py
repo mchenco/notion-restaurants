@@ -38,12 +38,14 @@ class NotionDB:
 					row.place_id = info['place_id']
 		return
 
-	def get_info(self):
+	def get_info(self, coords):
 		#construct a dict -> json object
 		result = self.query()
 
 		for row in result:
-			if row.place_id:
+			if row.place_id and \
+			row.lat <= coords['north'] and row.lat >= coords['south'] and \
+			row.lng >= coords['west'] and row.lng <= coords['east']:
 				json_string = {
 					'name' : row.name,
 					'address' : row.address,

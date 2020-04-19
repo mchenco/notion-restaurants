@@ -29,14 +29,11 @@ def test():
 
 	# POST request
 	if request.method == 'POST':
-		print('Incoming ..')
-		print(request.get_json())
-		return 'OK', 200
+		coords = request.get_json()
 
 	# GET request
-	else:
-		dct = cv.get_info()
-		return jsonify(dct)
+	dct = cv.get_info(coords)
+	return jsonify(dct)
 
 
 if __name__ == '__main__':

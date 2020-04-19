@@ -21,36 +21,35 @@ function initMap() {
 	});
 
 	google.maps.event.addListener(map, 'bounds_changed', function() {
-        north = map.getBounds().getNorthEast().lat();  
-	    east = map.getBounds().getNorthEast().lng();
-	    south = map.getBounds().getSouthWest().lat();  
-	    west = map.getBounds().getSouthWest().lng();
+        this.north = map.getBounds().getNorthEast().lat();  
+	    this.east = map.getBounds().getNorthEast().lng();
+	    this.south = map.getBounds().getSouthWest().lat();  
+	    this.west = map.getBounds().getSouthWest().lng();
      });
+
+	google.maps.event.addListener(map, 'idle', function() {
+		getRestaurants(this.north, this.east, this.south, this.west);
+	});
 }
 
 function placeMarker(restaurant) {
-	lat = restaurant.lat;
-	lng = restaurant.lng;
+	var marker = new google.maps.Marker({
+		position: {'lat': restaurant.lat, 'lng': restaurant.lng},
+		map: map,
+		title: restaurant.name
+	});
 
-	// if (lat <= this.north && lat >= this.south && lng >= this.west && lng <= this.east) {
-		var marker = new google.maps.Marker({
-			position: {'lat': restaurant.lat, 'lng': restaurant.lng},
-			map: map,
-			title: restaurant.name
-		});
+	var infowindow = new google.maps.InfoWindow({
+	    	content: iwSetContent(restaurant)
+	    });
 
-		var infowindow = new google.maps.InfoWindow({
-		    	content: iwSetContent(restaurant)
-		    });
-
-		marker.addListener('click', function() {
-			if (activewindow) {
-				activewindow.close();
-			};
-			infowindow.open(map, marker);
-			activewindow = infowindow;
-		});
-	// };
+	marker.addListener('click', function() {
+		if (activewindow) {
+			activewindow.close();
+		};
+		infowindow.open(map, marker);
+		activewindow = infowindow;
+	});
 }
 
 // <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
@@ -62,30 +61,17 @@ function iwSetContent(restaurant){
 		<a id=iw-url class="par" href= "${restaurant.url}"> Google Maps </a>`;
 }
 
-// function getRestaurants(north, east, south, west) {
-// 	fetch('/test', {
-// 		method: 'POST',
-// 		headers: new Headers(),
-// 		body: JSON.stringify({
-// 			north: north,
-// 			east: east,
-// 			south: south,
-// 			west: west
-// 		})
-// 	})
-// 		.then(function (response) {
-// 				return response.json();
-// 			}).then(function (dct) {
-// 				for (var restaurant in dct) {
-// 					placeMarker(dct[restaurant]);
-// 				};
-// 		// .catch() {}
-// 		});
-// };
-
-// GET is the default method, so we don't need to set it
-fetch('/test')
-	.then(function (response) {
+function getRestaurants(north, east, south, west) {
+	fetch('/test', {
+		method: 'POST',
+		headers: { 'Content-Type':'application/json' },
+		body: JSON.stringify({
+			north: north,
+			east: east,
+			south: south,
+			west: west
+		})
+	}).then(function (response) {
 			return response.json();
 		}).then(function (dct) {
 			for (var restaurant in dct) {
@@ -93,3 +79,4 @@ fetch('/test')
 			};
 	// .catch() {}
 	});
+};
