@@ -1,8 +1,8 @@
 
 # Notion Restaurant Map
-I love food and discovering new places. This app pulls data from my Notion database of restaurants and plots them on a map for you to see the physical location of restaurants.
+I love food and discovering new places. This app pulls data from my Notion database of restaurants and plots them on a map to see the physical location of restaurants.
 
-## Why not just add restaurants on Google Maps?
+## Why not just save restaurants on Google Maps?
 Well, short answer, I'm lazy. If I see a restaurant on Instagram, it takes too many steps to open Google Maps, search for the restaurant, and add it to my collections. But with Notion, I can use the web clipper to save the restaurant to my database in a few clicks.
 
 This app then automatically performs the Google search query for me to populate information like address, place_id, etc. Lazy :)
@@ -13,8 +13,8 @@ This app then automatically performs the Google search query for me to populate 
 3. App will call the Places API for newly added restaurants in Notion that don't already have the address/place_id info populated. Information gets populated and saved in Notion db to reduce future calls.
 4. Web app will load with a form for someone to enter a city to return results for (i.e New York, Toronto, Los Angeles, etc.)
 5. After submission, the database returns restaurants within that city and plots it
-	a. The app will automatically replot markers when the map moves
-	b. Only plotting the restaurants within a given city makes it faster, especially for large databases and well-travelled users :)
+	- The app will automatically replot markers when the map moves
+	- Only plotting the restaurants within a given city makes it faster, especially for large databases and well-travelled users :)
 7. Users can click on the markers to show information like price and rating, as well as a link to open it in Google Maps for directions
 
 ### Technicals
