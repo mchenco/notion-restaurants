@@ -32,7 +32,7 @@ function placeMarker(restaurant) {
 	lat = restaurant.lat;
 	lng = restaurant.lng;
 
-	if (lat <= this.north && lat >= this.south && lng >= this.west && lng <= this.east) {
+	// if (lat <= this.north && lat >= this.south && lng >= this.west && lng <= this.east) {
 		var marker = new google.maps.Marker({
 			position: {'lat': restaurant.lat, 'lng': restaurant.lng},
 			map: map,
@@ -50,7 +50,7 @@ function placeMarker(restaurant) {
 			infowindow.open(map, marker);
 			activewindow = infowindow;
 		});
-	};
+	// };
 }
 
 // <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
@@ -67,7 +67,10 @@ function iwSetContent(restaurant){
 // 		method: 'POST',
 // 		headers: new Headers(),
 // 		body: JSON.stringify({
-
+// 			north: north,
+// 			east: east,
+// 			south: south,
+// 			west: west
 // 		})
 // 	})
 // 		.then(function (response) {
