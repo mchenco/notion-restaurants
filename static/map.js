@@ -16,7 +16,7 @@ function initMap() {
 
 	bounds  = new google.maps.LatLngBounds();
 	map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 15,
+		zoom: 13,
 		center: {'lat': 43.6532, 'lng': -79.3832}
 	});
 
@@ -26,15 +26,6 @@ function initMap() {
 	    south = map.getBounds().getSouthWest().lat();  
 	    west = map.getBounds().getSouthWest().lng();
      });
-}
-
-// <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
-function iwSetContent(restaurant){
-	return `<p id=iw-heading>${restaurant.name} </p>
-		<hr class="solid">
-		<p id=iw-rating class="par"> <b> Rating: </b> ${restaurant.rating} ⭐️ </p>
-		<p id=iw-price class="par"> <b> Price: </b>${restaurant.price_level} 💸 </p>
-		<a id=iw-url class="par" href= "${restaurant.url}"> Google Maps </a>`;
 }
 
 function placeMarker(restaurant) {
@@ -60,6 +51,15 @@ function placeMarker(restaurant) {
 			activewindow = infowindow;
 		});
 	};
+}
+
+// <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
+function iwSetContent(restaurant){
+	return `<p id=iw-heading>${restaurant.name} </p>
+		<hr class="solid">
+		<p id=iw-rating class="par"> <b> Rating: </b> ${restaurant.rating} ⭐️ </p>
+		<p id=iw-price class="par"> <b> Price: </b>${restaurant.price_level} 💸 </p>
+		<a id=iw-url class="par" href= "${restaurant.url}"> Google Maps </a>`;
 }
 
 // function getRestaurants(north, east, south, west) {
