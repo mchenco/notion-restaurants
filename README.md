@@ -7,7 +7,9 @@ Well, short answer, I'm lazy. If I see a restaurant on Instagram, it takes too m
 
 This app then automatically performs the Google search query for me to populate information like address, place_id, etc. Lazy :)
 
-## User Flow
+## How it works
+
+### User Flow
 1. User clips restaurants to Notion db
 2. User loads web app
 3. App will call the Places API for newly added restaurants in Notion that don't already have the address/place_id info populated. Information gets populated and saved in Notion db to reduce future calls.
