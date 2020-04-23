@@ -43,3 +43,5 @@ The Google Maps "detailed" query has to be done per page load rather than stored
 - Plotting markers takes a while
 - Show 'Open Now' or hours in marker info window 
 - Make info window prettier
+- add geolocation in
+- add home button control

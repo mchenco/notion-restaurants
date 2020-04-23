@@ -7,8 +7,9 @@ class NotionDB:
 	def __init__(self):
 		self.client = NotionClient(os.environ.get('NOTION_KEY'))
 		self.cv = self.client.get_collection_view(os.environ.get('RESTAURANT_DB'))
-		self.update_addresses()
 		self.dct = dict()
+
+		self.update_addresses()
 		return
 
 	def query(self):
@@ -38,8 +39,8 @@ class NotionDB:
 					row.place_id = info['place_id']
 		return
 
+	#construct a dict -> json object
 	def get_info(self, coords):
-		#construct a dict -> json object
 		result = self.query()
 
 		for row in result:
@@ -51,7 +52,7 @@ class NotionDB:
 					'address' : row.address,
 					'lat' : row.lat,
 					'lng' : row.lng,
-					'marker_icon' : row.marker_icon,
+					# 'marker_icon' : row.marker_icon,
 					'place_id' : row.place_id
 				}
 				self.dct[row.place_id] = json_string
