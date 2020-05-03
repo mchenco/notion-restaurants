@@ -1,13 +1,14 @@
 import os
 
 import notion_restaurant
-import gmaps
+# import gmaps
 
-from flask import Flask, jsonify, request, render_template, redirect, session
+from flask import Flask, jsonify, request, render_template
 from flask_heroku import Heroku
 
 app = Flask(__name__)
 heroku = Heroku(app)
+
 
 @app.route('/')
 def index():
