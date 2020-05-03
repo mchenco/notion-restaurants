@@ -12,6 +12,7 @@ flask = "*"
 requests = "*"
 gunicorn = "*"
 flask-heroku = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.6"

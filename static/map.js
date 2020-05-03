@@ -20,6 +20,18 @@ function initMap() {
 		center: {'lat': 43.6532, 'lng': -79.3832}
 	});
 
+	var chicago = {lat: 41.850, lng: -87.650};
+	var controlUI = document.getElementById('control-ui');
+	controlUI.addEventListener('click', function() {
+	  map.setCenter(chicago)
+	});
+
+  var centerControlDiv = document.getElementById('control-div');
+  var centerControl = new CenterControl(centerControlDiv, map);
+
+  centerControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(centerControlDiv);
+
 	google.maps.event.addListener(map, 'bounds_changed', function() {
         this.north = map.getBounds().getNorthEast().lat();  
 	    this.east = map.getBounds().getNorthEast().lng();
@@ -30,6 +42,16 @@ function initMap() {
 	google.maps.event.addListener(map, 'idle', function() {
 		getRestaurants(this.north, this.east, this.south, this.west);
 	});
+}
+
+function CenterControl(controlDiv, map) {
+  var controlUI = document.getElementById('control-ui');
+  var controlText = document.getElementById('control-text');
+
+  controlUI.addEventListener('click', function() {
+    location.href = "/";
+  });
+
 }
 
 function placeMarker(restaurant) {

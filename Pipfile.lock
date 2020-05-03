@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "44e8ef1aafa6e719b0cdd35a83aa769d3621e0970a26ef27bdc79ed4f6b636f5"
+            "sha256": "be86d0d131d73fa43363a179f888d80cea2bb3fa237c9712d4f6bc20d4ea1a62"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,10 +32,10 @@
         },
         "click": {
             "hashes": [
-                "sha256:8a18b4ea89d8820c5d0c7da8a64b2c324b4dabb695804dbfea19b9be9d88c0cc",
-                "sha256:e345d143d80bf5ee7534056164e5e112ea5e22716bbb1ce727941f4c8b471b9a"
+                "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a",
+                "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
             ],
-            "version": "==7.1.1"
+            "version": "==7.1.2"
         },
         "flask": {
             "hashes": [
@@ -54,11 +54,10 @@
         },
         "googlemaps": {
             "hashes": [
-                "sha256:511b2c20842d812d4fa03d70e4264147dd7fd6b88ee0819e502934329c4ac454",
-                "sha256:e081f51d352780993d340f7346a139f1072dd4f16807838b304c0a13f564f463"
+                "sha256:38e73e21670807ddb26b23a788d701427909a0cb3436e095745482a6931f9a4a"
             ],
             "index": "pypi",
-            "version": "==4.2.0"
+            "version": "==4.3.1"
         },
         "gunicorn": {
             "hashes": [
@@ -130,6 +129,14 @@
         "master": {
             "git": "https://github.com/mchenco/notion-py.git",
             "ref": "7e88800625fd5f171ce2eeff5fb57819b96c428d"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:25c0ff1a3e12f4bde8d592cc254ab075cfe734fc5dd989036716fd17ee7e5ec7",
+                "sha256:3b9909bc96b0edc6b01586e1eed05e71174ef4e04c71da5786370cebea53ad74"
+            ],
+            "index": "pypi",
+            "version": "==0.13.0"
         },
         "requests": {
             "hashes": [

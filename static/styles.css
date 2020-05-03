@@ -19,6 +19,38 @@ html, body {
 	margin-bottom: 3px;
 }
 
+#control-div {
+	right: 10px !important;
+	bottom: 210px !important;
+	width: 40px;
+	height: 40px;
+}
+
+#control-ui {
+	background-color: white;
+	border-radius: 2px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  	cursor: pointer;
+  	text-align: center;
+}
+
+#control-text {
+	color: rgb(25,25,25);
+	font-family: Roboto,Arial,sans-serif;
+	font-size: 16px;
+	line-height: 38px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#icon-home {
+	color: dimgray;
+}
+
+#control-div:hover #icon-home {
+	color: orange;
+}
+
 .par {
 	margin: 0px;
 	font-size: 10px;

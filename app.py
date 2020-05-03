@@ -5,7 +5,9 @@ import notion_restaurant
 
 from flask import Flask, jsonify, request, render_template
 from flask_heroku import Heroku
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
 heroku = Heroku(app)
 
