@@ -77,6 +77,8 @@ function placeMarker(restaurant) {
 // <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
 function iwSetContent(restaurant){
 	var picImg = "data:image/png;base64," + restaurant.photos;
+	console.log(restaurant.price_level)
+	restaurant.price_level = restaurant.price_level ? restaurant.price_level : 0;
 	return `
 		<div id="iw-wrapper">
 			<div id="iw-header">
@@ -98,7 +100,7 @@ function iwSetContent(restaurant){
 					<div class="Dollars" style="--rating: ${restaurant.price_level};"> </div>
 					${restaurant.price_level}
 				</div>
-				<button id="iw-link-button" onclick="${restaurant.url};"> <i class="fas fa-location-arrow"></i> </button>
+				<button id="iw-link-button" onclick="window.location.href='${restaurant.url}';"> <i class="fas fa-location-arrow"></i> </button>
 			</div>
 		</div>
 	`;

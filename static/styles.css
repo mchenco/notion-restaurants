@@ -34,7 +34,7 @@ html, body {
 	font-size: 14px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	text-shadow: 2px 2px 3px black;
+	text-shadow: 5px 5px 5px black;
 	overflow-wrap: break-word;
 
 	margin: 0px;
@@ -80,6 +80,7 @@ html, body {
 
 #iw-link-button:hover {
 	background: darkgray;
+	cursor: pointer;
 }
 
 #control-div {
