@@ -13,6 +13,7 @@ requests = "*"
 gunicorn = "*"
 flask-heroku = "*"
 python-dotenv = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"

@@ -42,7 +42,7 @@ function initMap() {
 	google.maps.event.addListener(map, 'idle', function() {
 		getRestaurants(this.north, this.east, this.south, this.west);
 	});
-}
+};
 
 function CenterControl(controlDiv, map) {
   var controlUI = document.getElementById('control-ui');
@@ -52,7 +52,7 @@ function CenterControl(controlDiv, map) {
     location.href = "/";
   });
 
-}
+};
 
 function placeMarker(restaurant) {
 	var marker = new google.maps.Marker({
@@ -72,16 +72,37 @@ function placeMarker(restaurant) {
 		infowindow.open(map, marker);
 		activewindow = infowindow;
 	});
-}
+};
 
 // <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
 function iwSetContent(restaurant){
-	return `<p id=iw-heading>${restaurant.name} </p>
-		<hr class="solid">
-		<p id=iw-rating class="par"> <b> Rating: </b> ${restaurant.rating} ⭐️ </p>
-		<p id=iw-price class="par"> <b> Price: </b>${restaurant.price_level} 💸 </p>
-		<a id=iw-url class="par" href= "${restaurant.url}"> Google Maps </a>`;
-}
+	var picImg = "data:image/png;base64," + restaurant.photos;
+	return `
+		<div id="iw-wrapper">
+			<div id="iw-header">
+				<img id="iw-photo" src=${picImg}>
+			</div>
+			<p id=iw-heading-text>${restaurant.name} </p>
+			<div id="iw-details">
+				<div id="iw-rating-header" class="iw-details-header">
+					Rating
+				</div>
+				<div id=iw-rating class="iw-details-text">
+			        <div class="Stars" style="--rating: ${restaurant.rating};"> </div>
+			        ${restaurant.rating}
+				</div>
+				<div id=iw-price-header class="iw-details-header">
+					Price
+				</div>
+				<div id=iw-price class="iw-details-text">
+					<div class="Dollars" style="--rating: ${restaurant.price_level};"> </div>
+					${restaurant.price_level}
+				</div>
+				<button id="iw-link-button" onclick="${restaurant.url};"> <i class="fas fa-location-arrow"></i> </button>
+			</div>
+		</div>
+	`;
+};
 
 function getRestaurants(north, east, south, west) {
 	fetch('/test', {

@@ -8,15 +8,78 @@ html, body {
   height: 100%;
 }
 
-#iw-heading {
-	color: black;
+#iw-wrapper {
+	width: 200px;
+	height: 170px;
+
+}
+
+#iw-header {
+	height: 80%;
+	width: 200px;
+	display: inline-block;
+	margin-top: -40px;
+}
+
+#iw-photo {
+	object-fit: cover;
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+}
+
+#iw-heading-text {
+	color: white;
 	font-weight: bold;
 	font-size: 14px;
-	letter-spacing: 0.5px;
+	letter-spacing: 1px;
 	text-transform: uppercase;
+	text-shadow: 2px 2px 3px black;
+	overflow-wrap: break-word;
 
 	margin: 0px;
-	margin-bottom: 3px;
+	z-index: 1;
+	bottom: 50%;
+	position: absolute;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#iw-details {
+	position: relative;
+	padding-left: 15px;
+	padding-top: 3px;
+}
+
+.iw-details-header {
+	font-size: 10px;
+	text-transform: uppercase;
+	color: grey;
+	line-height: 14px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding-top: 4px;
+}
+
+.iw-details-text {
+	color: grey;
+	font-size: 10px;
+}
+
+#iw-link-button {
+	position: absolute;
+	left: 80%;
+	bottom: 1%;
+
+	background: lightgray;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	padding: 7px;
+}
+
+#iw-link-button:hover {
+	background: darkgray;
 }
 
 #control-div {
@@ -98,4 +161,65 @@ html, body {
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
+}
+
+.gm-style .gm-style-iw-c {
+	padding: 0px !important;
+}
+
+.gm-style-iw-d {
+	overflow: hidden !important;
+}
+
+.gm-ui-hover-effect {
+	top: 0px !important;
+	right: 0px !important;
+	opacity: 0.8 !important;
+
+}
+
+.gm-ui-hover-effect > img {
+	filter: invert(1);}
+
+:root {
+  --star-size: 10px;
+  --star-color: lightgray;
+  --star-background: #fc0;
+
+  --dollar-size: 10px;
+  --dollar-color: lightgray;
+  --dollar-background: green;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block;
+  font-size: var(--star-size);
+  line-height: 1;
+ }
+
+.Stars::before {
+	content: '★★★★★';
+	letter-spacing: 2px;
+	background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.Dollars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block;
+  font-size: var(--dollar-size);
+  line-height: 1;
+ }
+
+.Dollars::before {
+	content: '$$$$$';
+	font-weight: normal;
+	letter-spacing: 7px;
+	background: linear-gradient(90deg, var(--dollar-background) var(--percent), var(--dollar-color) var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
