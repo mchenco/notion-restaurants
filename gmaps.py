@@ -1,11 +1,8 @@
 import os
 
-import requests
-import googlemaps
-import json
 import base64
-from PIL import Image
-from io import BytesIO
+import requests
+
 
 def search(searchword):
 	payload = {
@@ -21,11 +18,12 @@ def search(searchword):
 	)
 	return r.json()
 
+
 def detail_search(place_id):
 	payload = {
 		'key': os.environ.get('GMAPS_KEY'),
 		'place_id': place_id,
-		'fields': 'url,price_level,rating,opening_hours,photos', #review made it slow
+		'fields': 'url,price_level,rating,opening_hours,photos',
 	}
 	r = requests.get(
 		'https://maps.googleapis.com/maps/api/place/details/json?',
@@ -36,6 +34,7 @@ def detail_search(place_id):
 	photo = photo_search(photoref)
 	result['result']['photos'] = photo
 	return result
+
 
 def photo_search(photoreference):
 	payload = {
@@ -50,5 +49,3 @@ def photo_search(photoreference):
 	if r.status_code == 200:
 		b64string = str(base64.b64encode(r.content).decode("utf-8"))
 		return b64string
-
-
