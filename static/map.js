@@ -69,9 +69,8 @@ function getRestaurants(north, east, south, west) {
             for (var restaurant in dct) {
                 placeMarker(dct[restaurant]);
             }
-        .catch(function (error) {
+        }).catch(function (error) {
             console.log(error);
-        )};
     });
 }
 
@@ -98,7 +97,6 @@ function placeMarker(restaurant) {
 // <p> <b> Open Now: </b> ${restaurant.opening_hours.open_now} </p>
 function iwSetContent(restaurant){
     var picImg = "data:image/png;base64," + restaurant.photos;
-    console.log(restaurant.price_level)
     restaurant.price_level = restaurant.price_level ? restaurant.price_level : 0;
     return `
         <div id="iw-wrapper">
